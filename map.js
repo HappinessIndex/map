@@ -50,6 +50,7 @@ $(document).ready(function(){
 	    if (!L.Browser.ie && !L.Browser.opera) {
 	        layer.bringToFront();
 	    }
+
 	}
 
 	//Function to define mouseout. The handy geojson.resetStyle method will reset the layer style to its default state (defined by our style function). For this to work, make sure our GeoJSON layer is accessible through the geojson variable by defining it before our listeners and assigning the layer to it later
@@ -76,7 +77,26 @@ $(document).ready(function(){
 	    onEachFeature: onEachFeature
 	}).addTo(map);
 
+	var info = L.control();
+
+	info.onAdd = function (map) {
+	    this._div = L.DomUtil.create('div', 'graphBox');
+	    this._div.innerHTML = '<h4>Happiness Index</h4>' + 'Hover over a region & Be Happy!';
+	    // create a div with a class "graphBox"
+	     this.update();
+
+	    return this._div;
+	};
+
+	// method that we will use to update the control based on feature properties passed
+	info.update = function (props) {
+		
+		graphLoad(this._div);
+	    
+	};
+
+	info.addTo(map);
+
 })
 
-	
 

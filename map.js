@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+	// $.get( "some/route", function( geojson ) {
+	//   	alert( "requesting data" );
+	// }).done(function() {
+	//     alert( "data loaded" );
+
+	//     loadMapAndGraph();
+	// });
+
 	L.mapbox.accessToken = 'pk.eyJ1IjoiZW52aW50YWdlIiwiYSI6Inh6U0p2bkEifQ.p6VrrwOc_w0Ij-iTj7Zz8A';
 	var map = L.mapbox.map('map', 'mapbox.streets')
 	    .setView([-41.28760, 174.78639], 3);	
@@ -7,8 +16,24 @@ $(document).ready(function(){
 
 	var columnWidth = 5;
     var columnPadding = 2;
-    var w = statesData.features.length * (columnWidth + columnPadding);
+    var w = statesData.features.length * (columnWidth + columnPadding) + (columnWidth * 5);
     var h = 200;
+
+    function tip(){
+    	d3.tip()
+	        .attr('class', 'd3-tip')
+	        .offset([-15, 10])
+	        .html(function(d) {
+	            return "<strong>Happiness Index :</strong> <span style='color: #FF1919'>" + d.properties.happinessIndex + "</span>";
+	        })
+    }
+
+    // var tip = d3.tip()
+    //     .attr('class', 'd3-tip')
+    //     .offset([-15, 10])
+    //     .html(function(d) {
+    //         return "<strong>Happiness Index :</strong> <span style='color: #FF1919'>" + d.properties.happinessIndex + "</span>";
+    //     })
 
  	//add graphBox to the map
 	var info = L.control();
@@ -85,8 +110,7 @@ $(document).ready(function(){
 
 	//functions for animating d3 graphs when hover events on the map
 	function animateBar(id){
-		// console.log();
-
+		// tip().show();
         var gs = d3.selectAll("rect")
         shiftOut(gs[0], document.getElementById(id)["x"]["animVal"]["value"])
         d3.select(document.getElementById(id))
@@ -98,7 +122,7 @@ $(document).ready(function(){
 	}
 	
 	function resetBar(id){
-
+		// tip().show();
         var gs = d3.selectAll("rect")
         shiftBack(gs[0], document.getElementById(id)["x"]["animVal"]["value"])
         d3.select(document.getElementById(id))
@@ -147,13 +171,6 @@ $(document).ready(function(){
     }  
 
 	function graphLoad(graphDiv){
-
-	    // var tip = d3.tip()
-	    //     .attr('class', 'd3-tip')
-	    //     .offset([-15, 10])
-	    //     .html(function(d) {
-	    //         return "<strong>Happiness Index :</strong> <span style='color: #FF1919'>" + d.properties.happinessIndex + "</span>";
-	    //     })
 	    
 	    var svg = d3.select(graphDiv)
 	        .append("svg")

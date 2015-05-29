@@ -15,21 +15,24 @@
         <link href='http://fonts.googleapis.com/css?family=Marcellus+SC|Londrina+Solid|Fugaz+One|Monoton|Cinzel|Julius+Sans+One' rel='stylesheet' type='text/css'>
         <style type="text/css">
 
-             body { 
-                margin: 0; 
-                padding: 0;
+            html {
                 height: 100%;
-                width: 100%; 
+            }
+             body { 
+                margin: 0 auto;
+                padding: 0;
+                height: 85%;
+                width: 90%; 
                 background: #141445;
+
             }
              #map { 
                 margin: 0 auto;
-                margin-top: 100px;
-                margin-bottom: 100px;
+                margin-top: 110px;
                 top: 0; 
                 bottom: 0; 
-                width: 1600px;
-                height: 900px;
+                width: 80%;
+                height: 80%;
             }
             .bar {
                 fill: #3355ff;
@@ -45,7 +48,7 @@
                 position: relative;
                 display: block;
                 margin: auto;
-                width: 200px;
+                /*width: 2000px;*/
             }
             .d3-tip {
                 line-height: 1;
@@ -100,7 +103,7 @@
                 background: rgba(255,255,255,0.8);
                 box-shadow: 0 0 15px rgba(0,0,0,0.2);
                 border-radius: 5px;
-                width: 500px;
+                width: 700px;
                 height: 260px;
             }            
             .graphBox h4 {
@@ -108,6 +111,16 @@
                 color: #000;
                 font-weight: bold;
                 font-size:20px;
+            }
+
+            #footer {
+                color : #fff;
+                text-align: center;
+                font-family: 'Cinzel', serif;
+                margin-top: 90px;
+                margin-right : 80px;
+
+
             }
                 		
 		</style>     
@@ -123,6 +136,8 @@
             <h1 class="graphTitle">Happiness Index</h1>
             <! graph goes here -->
      <!-- </div> <!-->
+
     </body>
 
+     <footer id="footer" >&copy; RIBOLT Copyright 2015</footer>
 </html>

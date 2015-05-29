@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Map Test</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script type="text/javascript" src="d3.v3.js"></script> 
+        <script type="text/javascript" src="tip.js"></script> 
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet'/>
+        <script src='http://code.jquery.com/jquery-2.1.4.js'></script>
+        <script src='graph.js'></script>
+        <script src='map.js'></script>
+        <script src='us-states.js'></script>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus+SC|Londrina+Solid|Fugaz+One|Monoton|Cinzel|Julius+Sans+One' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+
+            html {
+                height: 100%;
+            }
+             body { 
+                margin: 0 auto;
+                padding: 0;
+                height: 85%;
+                width: 90%; 
+                background: #141445;
+
+            }
+             #map { 
+                margin: 0 auto;
+                margin-top: 110px;
+                top: 0; 
+                bottom: 0; 
+                width: 80%;
+                height: 80%;
+            }
+            .bar {
+                fill: #3355ff;
+                -moz-transition: all 0.2s;
+                -webkit-transition: all 0.2s;
+                -o-transition: all 0.2s;
+                transition: all 0.2s;
+            }
+            /*.bar:hover {
+              fill: #ff6633;
+            }*/
+            .svg{
+                position: relative;
+                display: block;
+                margin: auto;
+                /*width: 2000px;*/
+            }
+            .d3-tip {
+                line-height: 1;
+                font-weight: bold;
+                padding: 12px;
+                background: rgba(0, 0, 0, 0.7);
+                color: #fff;
+                border-radius: 5px;
+                z-index: 1000;
+                font-family: 'Cinzel', serif;
+
+            }
+            .d3-tip:after {
+                box-sizing: border-box;
+                display: inline;
+                font-size: 10px;
+                width: 100%;
+                line-height: 1;
+                color: rgba(0, 0, 0, 0.7);
+                content: "\25BC";
+                position: absolute;
+                text-align: center;
+            }
+            .d3-tip.n:after {
+                margin: -1px 0 0 0;
+                top: 100%;
+                left: 0;
+            }
+            #graph {
+                position: absolute;
+/*              top: 8.75em;
+                right: 12em;*/
+                background: rgba(125, 125, 125, 0.4);
+                width: 500px;
+                height: 260px;
+            }
+            .graphTitle{
+                background: rgba(125, 125, 125, 0.4);
+                text-align: center;
+                color: #00ffbb;
+                margin-top: 5px;
+                margin-bottom: 0px; 
+                margin-left: 80px;
+                margin-right: 80px;           
+            }
+            .graphBox {
+                padding: 6px 8px;
+                font-size:16px;
+                font: 20px/16px;
+                font-family: 'Cinzel', serif;
+                background: white;
+                background: rgba(255,255,255,0.8);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                border-radius: 5px;
+                /*width: 700px;*/
+                height: 260px;
+            }            
+            .graphBox h4 {
+                margin: 0 0 5px;
+                color: #000;
+                font-weight: bold;
+                font-size:20px;
+            }
+
+            #footer {
+                color : #fff;
+                text-align: center;
+                font-family: 'Cinzel', serif;
+                margin-top: 90px;
+                margin-right : 80px;
+
+
+            }
+                		
+		</style>     
+    </head>
+    <body>
+        <div id="map">
+            <!-- map goes here -->
+        </div>
+    </body>
+    <footer id="footer" >&copy; RIBOLT Copyright 2015</footer>
+</html>

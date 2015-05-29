@@ -22,14 +22,14 @@ $(document).ready(function(){
 	    var w = statesData.features.length * (columnWidth + columnPadding) + (columnWidth * 5);
 	    var h = 200;
 
-	    function tip(){
-	    	d3.tip()
-		        .attr('class', 'd3-tip')
-		        .offset([-15, 10])
-		        .html(function(d) {
-		            return "<strong>Happiness Index :</strong> <span style='color: #FF1919'>" + d.properties.happinessIndex + "</span>";
-		        })
-	    }
+	      var tip = d3.tip()
+                .attr('class', 'd3-tip')
+                .offset([-15, 10])
+                .html(function(d) {
+
+
+                    return "<strong>Happiness Index :</strong> <span style='color: #FF1919'>" + d.properties.happinessIndex + "</span>";
+                })
 
 	    // var tip = d3.tip()
 	    //     .attr('class', 'd3-tip')
@@ -120,7 +120,14 @@ $(document).ready(function(){
 		        .transition()
 		        .duration(50)
 		        .attr("width", (columnWidth * 5))
-		        .style("fill", "#ff6633")
+		        .style("fill", "#ff6633");
+
+
+		        console.log("thing", document.getElementById(id)['height']["animVal"]["value"])
+		        var data = {   properties:{happinessIndex: document.getElementById(id)['height']["animVal"]["value"] / 20 }};
+		       
+
+		       tip.show(data, document.getElementById(id))
 	        // d3.select("svg").attr("width", (w + (columnWidth * 5 )))
 		}
 		
@@ -145,6 +152,8 @@ $(document).ready(function(){
 		function onEachFeature(feature, layer) {
 		    layer.on({
 		        mouseover: highlightFeature,
+		        mouseout: resetHighlight,
+		        mouseenter: tip.show,
 		        mouseout: resetHighlight,
 		       	//click: zoomToFeature
 		    });
@@ -179,8 +188,8 @@ $(document).ready(function(){
 		        .append("svg")
 		        .attr("width", w)
 		        .attr("height", h)
-		        .attr("class", "svg");
-		        // .call(tip);
+		        .attr("class", "svg")
+		         .call(tip);
 
 
 		    svg.selectAll("g")
